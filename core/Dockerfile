@@ -1,6 +1,10 @@
 FROM jkaninda/nginx-php-fpm:7.4
 
-RUN docker-php-ext-install fileinfo opcache redis exif intl
+RUN pecl install --force redis \
+  && rm -rf /tmp/pear \
+  && docker-php-ext-enable redis
+
+RUN docker-php-ext-install fileinfo opcache  exif intl
 
 COPY ./kkphim-core /var/www/html
 

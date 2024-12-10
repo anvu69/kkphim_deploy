@@ -16,5 +16,14 @@ Dự án này cung cấp các file cấu hình và script để triển khai KKP
 ## Cấu trúc thư mục
 
 ```
-.
 ├── ansible/
+├── ansible/
+│ ├── inventory/
+│ ├── playbooks/
+│ └── roles/
+├── docker/
+│ ├── nginx/
+│ ├── php/
+│ └── docker-compose.yml
+└── README.md
+```

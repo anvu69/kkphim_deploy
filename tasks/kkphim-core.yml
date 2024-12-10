@@ -1,0 +1,27 @@
+---
+- name: Copy kkphim-core folder
+  copy:
+    src: ./docker/kkphim-core
+    dest: ~/docker
+    mode: 0755
+
+- name: Login container registry
+  shell: |
+    export CR_PAT={{github_personal_token}}
+    echo $CR_PAT | docker login ghcr.io -u {{github_user}} --password-stdin
+
+- name: Pull image {{kkphim_core_tag}}}
+  shell: |
+    docker pull ghcr.io/anvu69/kkphim-core:{{kkphim_core_tag}}
+
+- name: Start kkphim-core
+  shell: |
+    cd ~/docker/kkphim-core
+    export TAG={{kkphim_core_tag}}
+    export VIRTUAL_HOST={{kkphim_core_host}}
+    export VIRTUAL_PORT={{kkphim_core_port}}
+    export LETSENCRYPT_EMAIL={{letsencrypt_email}}
+    export NETWORK={{network}}
+    export LOG_MAX_SIZE={{log_max_size}}
+    export LOG_MAX_FILE={{log_max_file}}
+    docker compose up -d
