@@ -1,0 +1,14 @@
+---
+- name: Deploy kkphim-core service
+
+  hosts: all
+
+  become: true
+
+  vars_files:
+    - vars/common.yml
+    - vars/kkphim-core.yml
+
+  tasks:
+    - import_tasks: tasks/kkphim-core.yml
+    - import_tasks: tasks/prune.yml
