@@ -1,0 +1,2 @@
+[lol]
+46.250.229.222 ansible_ssh_private_key_file=~/.ssh/id_ed25519 ansible_ssh_user=root

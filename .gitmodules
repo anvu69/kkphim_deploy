@@ -1,0 +1,3 @@
+[submodule "core/kkphim-core"]
+	path = core/kkphim-core
+	url = git@github.com:HaiAu009/kkphim-core.git
